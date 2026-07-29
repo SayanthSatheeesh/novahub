@@ -27,7 +27,8 @@ export default function RootLayout({
   return (
       <html
         lang="en"
-        className={`${outfit.variable} font-sans h-full antialiased light`}
+        className={`${outfit.variable} font-sans h-full antialiased`}
+        suppressHydrationWarning
       >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider
@@ -36,8 +37,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/85 dark:bg-[#0F0F23]/85 border-b border-slate-200 dark:border-white/10 shadow-sm transition-all">
-            <AnnouncementBar />
+          <AnnouncementBar />
+          <header className="sticky top-0 z-50 w-full h-0">
             <Nav />
           </header>
           <main className="flex-1">

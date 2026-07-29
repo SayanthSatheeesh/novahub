@@ -1,5 +1,7 @@
 # NOVAHUB — PRODUCT REQUIREMENTS DOCUMENT (PRD)
-### Version 1.0 · Read BRAIN.md before this document
+### Version 1.1 · Read BRAIN.md before this document
+
+> **Updated:** Phase 1 Demo Build is complete. Font is **Outfit** (not Poppins). Framework is **Next.js 16.2.11**. Styling is **Tailwind v4 CSS-first** (no tailwind.config.js). All logo images use Google Favicon API (clearbit removed).
 
 ---
 
@@ -282,23 +284,24 @@ NovaHub is a B2C e-commerce website that sells discounted digital software subsc
 
 ## 5. FEATURE REQUIREMENTS CHECKLIST
 
-### Must Have (Demo — Days 1-3)
-- [ ] Glassmorphism sticky navbar
-- [ ] Hero with animated floating product logos
-- [ ] Announcement bar with countdown
-- [ ] Netflix-style horizontal product scroll (3 categories)
-- [ ] Flash sale section with countdown
-- [ ] Live purchase notification (fake data)
-- [ ] Flash sale pop-up modal (3s delay)
-- [ ] Trust signals section (4 cards)
-- [ ] Payment proof gallery (placeholder images)
-- [ ] Testimonials (3 placeholders)
-- [ ] FAQ accordion
-- [ ] Footer
-- [ ] Dark/light mode toggle
-- [ ] WhatsApp floating button
-- [ ] Mobile responsive (tested at 375px and 768px)
-- [ ] Admin login page (UI only for demo)
+### Must Have (Demo — Days 1-3) ✅ COMPLETE
+- [x] Sticky navbar (glassmorphism on scroll — partially done)
+- [x] Hero with animated floating product logos
+- [x] Announcement bar — **Urban Monkey marquee style** (black + Indigo border)
+- [x] Embla carousel horizontal product scroll (3 categories) + mouse wheel gestures
+- [x] Flash sale section with live countdown
+- [x] Live purchase notification (fake data, 4s cycle)
+- [x] Flash sale pop-up modal (3s delay, localStorage)
+- [x] Trust signals section (4 cards)
+- [x] Payment proof gallery (placeholder cards)
+- [x] Testimonials (3 placeholders)
+- [x] FAQ accordion (Framer Motion height animation)
+- [x] Footer
+- [x] Dark/light mode toggle (next-themes)
+- [x] WhatsApp FAB (fixed bottom-right, pulse ring)
+- [x] Mobile responsive (375px, 768px, 1280px tested)
+- [x] Admin login page (UI only)
+- [x] **Design audit applied:** Flipkart rating pills, Xbox cinematic hover, Snitch uppercase tracking
 
 ### Must Have (Full Build — Days 4-14)
 - [ ] Supabase database + schema

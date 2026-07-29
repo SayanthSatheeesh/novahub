@@ -97,9 +97,12 @@ export function MultiCouponModal({ isOpen, onClose }: MultiCouponModalProps) {
                   className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-3 relative group hover:border-purple-500/50 transition-all"
                 >
                   <div className="space-y-1">
-                    <span className="inline-block bg-gradient-to-r from-rose-500 to-purple-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                      {coupon.badge}
-                    </span>
+                    <div className="relative inline-block overflow-hidden rounded-full">
+                      <span className="relative z-10 inline-block bg-gradient-to-r from-rose-500 to-purple-500 text-white text-[10px] font-extrabold px-2 py-0.5 uppercase tracking-wider shadow-sm">
+                        {coupon.badge}
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] z-20" />
+                    </div>
                     <h4 className="text-sm font-bold text-white">{coupon.title}</h4>
                     <p className="text-[11px] text-slate-400">{coupon.validity}</p>
                   </div>
@@ -135,8 +138,9 @@ export function MultiCouponModal({ isOpen, onClose }: MultiCouponModalProps) {
 
               <Button
                 onClick={onClose}
-                className="w-full bg-gradient-to-r from-[#4FC3F7] to-[#7B2FBE] text-white font-bold py-6 rounded-xl shadow-lg border-0 hover:brightness-110"
+                className="w-full bg-gradient-to-r from-primary to-[#7B2FBE] text-white font-bold py-6 rounded-xl shadow-[0_10px_20px_-10px_rgba(123,47,190,0.5)] border-0 hover:brightness-110 relative overflow-hidden group"
               >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                 <Sparkles className="w-4 h-4 mr-2" /> Collect All Coupons
               </Button>
             </div>

@@ -1,4 +1,7 @@
+"use client"
+
 import { Star } from "lucide-react"
+import { motion } from "framer-motion"
 
 const testimonials = [
   {
@@ -26,7 +29,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 bg-slate-50 dark:bg-[#0F0F23] border-b border-slate-200 dark:border-white/5 relative">
+    <section className="py-20 bg-background dark:bg-[#0F0F23] border-b border-border dark:border-white/5 relative">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-1 text-amber-500 dark:text-amber-400 mb-4 bg-amber-100 dark:bg-amber-400/10 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-400/20 shadow-sm">
@@ -43,11 +46,24 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {testimonials.map((testimonial, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="bg-white dark:bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-slate-200 dark:border-white/10 relative hover:border-primary/40 dark:hover:border-purple-500/40 hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-lg dark:hover:shadow-none"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 100 } }
+              }}
+              className="bg-white dark:bg-white/5 backdrop-blur-md p-8 rounded-3xl border-2 border-border dark:border-white/5 relative hover:border-primary dark:hover:border-[#7B2FBE] hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(69,74,211,0.15)] dark:hover:shadow-[0_20px_40px_-15px_rgba(123,47,190,0.2)] group"
             >
               <div className="absolute top-6 right-8 text-5xl text-slate-200 dark:text-white/10 font-serif leading-none select-none">“</div>
 
@@ -70,9 +86,9 @@ export function TestimonialsSection() {
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

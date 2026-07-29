@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { X, Sparkles, Check } from "lucide-react"
+import { X, Sparkles, Check, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -9,6 +9,7 @@ export function FirstTimeDiscountModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [timeLeft, setTimeLeft] = useState(15 * 60) // 15 minutes
 
   useEffect(() => {
     // Show after 10 seconds on first visit unless already dismissed
@@ -45,6 +46,20 @@ export function FirstTimeDiscountModal() {
     setTimeout(() => {
       handleDismiss()
     }, 2000)
+  }
+
+  useEffect(() => {
+    if (!isOpen || submitted) return
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [isOpen, submitted])
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60)
+    const s = seconds % 60
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`
   }
 
   return (
@@ -89,9 +104,15 @@ export function FirstTimeDiscountModal() {
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-amber-500/10 text-amber-300 border border-amber-500/20 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
-                  <Sparkles className="w-4 h-4 fill-current" />
-                  <span>First-Time Customer Special</span>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="inline-flex items-center space-x-2 bg-amber-500/10 text-amber-300 border border-amber-500/20 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+                    <Sparkles className="w-4 h-4 fill-current" />
+                    <span>First-Time Customer Special</span>
+                  </div>
+                  <div className="inline-flex items-center space-x-1.5 bg-red-500/10 text-red-500 border border-red-500/20 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider animate-pulse">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>Offer ends in: {formatTime(timeLeft)}</span>
+                  </div>
                 </div>
 
                 <div className="space-y-2">

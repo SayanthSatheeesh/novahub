@@ -1,290 +1,274 @@
-# NOVAHUB ‚Äî PROGRESS TRACKER
-### Live development checklist ¬∑ Update status as work progresses
+# NOVAHUB ó PROGRESS TRACKER
+### Live development checklist ∑ Update status as work progresses
 
-> **Rule:** Before starting any task, read `docs/BRAIN.md` ‚Üí `docs/PRD.md` ‚Üí `docs/WEBFLOW.md` ‚Üí `docs/UIUX_SPEC.md`  
-> **Status Icons:** `[ ]` Not Started ¬∑ `[/]` In Progress ¬∑ `[x]` Done ¬∑ `[-]` Skipped/Deferred
+> **Rule:** Before starting any task, read `docs/BRAIN.md` ? `docs/PRD.md` ? `docs/WEBFLOW.md` ? `docs/UIUX_SPEC.md`
+> **Status:** `[ ]` Not Started ∑ `[/]` In Progress ∑ `[x]` Done ∑ `[-]` Skipped/Deferred
 
 ---
 
-## PHASE 0 ‚Äî PLANNING & DISCOVERY
+## PHASE 0 ó PLANNING & DISCOVERY
 > Goal: Lock all decisions before a single line of code is written
 
 - [x] Read client transcript and extract requirements
 - [x] Competitive analysis (8 competitor sites)
-- [x] Define pricing strategy (‚Çπ40,000 fixed)
-- [x] Choose tech stack (Next.js 14 + Tailwind + Supabase + Razorpay)
+- [x] Define pricing strategy (?40,000 fixed)
+- [x] Choose tech stack (Next.js 16 App Router + Tailwind v4 + shadcn + Framer Motion)
 - [x] Finalize key decisions (payment, domain, hosting, admin, maintenance)
 - [x] Receive logo and banner assets from Shiv
-- [x] Write `BRAIN.md` ‚Äî brand identity, color system, typography
-- [x] Write `PRD.md` ‚Äî product requirements, all features, admin spec
-- [x] Write `WEBFLOW.md` ‚Äî user journey maps (8 flows)
-- [x] Write `UIUX_SPEC.md` ‚Äî component specs, spacing, animations
-- [x] Write `PROGRESS.md` ‚Äî this file
+- [x] Write `BRAIN.md` ó brand identity, color system, typography
+- [x] Write `PRD.md` ó product requirements, all features, admin spec
+- [x] Write `WEBFLOW.md` ó user journey maps (8 flows)
+- [x] Write `UIUX_SPEC.md` ó component specs, spacing, animations
+- [x] Write `PROGRESS.md` ó this file
+- [x] 6-site design audit (Amazon IN, Flipkart, Xbox, GullySports, Snitch, Urban Monkey) ? `design_audit_report.md`
 
-**Phase 0 Complete:** `10/10 tasks done`
+**Phase 0 Complete:** `12/12 tasks done`
 
 ---
 
-## PHASE 1 ‚Äî DEMO BUILD (Days 1‚Äì3)
-> Goal: A live, visually impressive URL to show Shiv and confirm approval + payment
+## PHASE 1 ó DEMO BUILD
+> Goal: A live, visually impressive URL to show Shiv
 
 ### 1.1 Project Scaffold
-- [/] Run `npx create-next-app@latest` ‚Äî App Router, TypeScript, Tailwind
-- [ ] Install dependencies: `framer-motion`, `embla-carousel-react`, `lucide-react`
-- [ ] Set up Google Fonts (Poppins 400/500/600/700/800) in `layout.tsx`
-- [ ] Configure Tailwind `tailwind.config.ts` with NovaHub design tokens (colors, spacing)
-- [ ] Set up global CSS variables (`--nova-*`) in `globals.css`
-- [ ] Create folder structure: `components/`, `app/`, `public/`, `lib/`, `types/`
-- [ ] Add logo and banner to `/public/assets/`
-- [ ] Set up dark/light mode with `next-themes`
+- [x] Create Next.js 16 App Router project (TypeScript, Tailwind v4)
+- [x] Install: framer-motion, embla-carousel-react, embla-carousel-wheel-gestures, lucide-react, next-themes, shadcn/ui
+- [x] Set up Outfit font (Google Fonts) in `layout.tsx`
+- [x] Configure design tokens (CSS variables) in `globals.css`
+- [x] Create folder structure: `src/app/`, `src/components/home/`, `src/components/layout/`, `src/components/ui/`, `src/lib/`
+- [x] Set up dark/light mode with next-themes
 
-### 1.2 Global Shell (Navbar & Footer)
-- [x] Create `Nav` component with glassmorphism, responsive hamburger menu, and dark mode toggle
-- [x] Create `AnnouncementBar` component (Flash sale text + countdown)
-- [x] Create `Footer` component
-- [x] Create `WhatsAppFAB` component (Fixed bottom right)
-- [x] Create `LivePurchaseTicker` component (Fixed bottom left)
+### 1.2 Global Shell
+- [x] `Nav` ó sticky, responsive hamburger, dark mode toggle, WhatsApp CTA
+- [x] `AnnouncementBar` ó **Urban Monkey style:** black bg, Indigo border-bottom, CSS marquee
+- [x] `Footer` ó logo, links, WhatsApp, social placeholders, legal
+- [x] `WhatsAppFAB` ó fixed bottom-right, pulse ring animation
+- [x] `LivePurchaseTicker` ó fixed bottom-left, fake purchase data cycling 4s
 
-### 1.3 Homepage ‚Äî Hero Section
-- [x] Two-column layout (text left, visual right) ‚Üí stacked on mobile
-- [x] Badge: `#1 Trusted Software Marketplace in India`
+### 1.3 Homepage ó Hero Section
+- [x] Two-column layout (text left, visual right) ? stacked on mobile
+- [x] Badge: `? #1 Trusted Software Marketplace in India`
 - [x] H1 with gradient text on second line (`Trusted Solutions.`)
-- [x] Body copy and stats row (Orders / Tools / Rating)
+- [x] Body copy + stats row (Orders / Tools / Rating)
 - [x] Primary CTA: "Browse All Products"
 - [x] Secondary CTA: "Chat on WhatsApp" with icon
-- [x] Floating animated product logo cards (CSS keyframes)
+- [x] Floating animated product logo cards (CSS keyframes ó 8+ logos)
+- [x] Bottom brand marquee strip (logo cloud)
 
-### 1.4 Homepage ‚Äî Flash Sale Section
-- [x] Section header with `‚ö° Flash Deals` + live countdown timer
-- [x] Flash sale product cards (3‚Äì4 cards, horizontal scroll)
+### 1.4 Homepage ó Flash Sale Section
+- [x] Section header + live countdown timer
+- [x] Embla carousel ó touch + **mouse wheel scroll** (embla-wheel-gestures)
+- [x] Flash sale product cards (horizontal scroll, 3-4 cards)
 - [x] Flash badge with CSS pulse animation
 - [x] Urgency text: "Only X left at this price!"
-- [x] "View All Flash Deals" CTA link
+- [x] "View All Flash Deals" CTA
+- [x] **Framer Motion scroll-triggered fade-up** (Xbox pattern, 600ms, 80ms stagger)
+- [x] **Flipkart green rating pill** (#388E3C) on each card
+- [x] **Cinematic card image hover** scale(1.04) 500ms cubic-bezier
+- [x] **Card lift hover** -translate-y-1.5 shadow-2xl
 
-### 1.5 Homepage ‚Äî Product Category Rows (Netflix-Style)
-- [x] `<CategoryRow />` reusable component
-- [x] Category: AI Assistants row (ChatGPT, Gemini, Lovable)
-- [x] Category: Design Tools row (Adobe CC, Canva Pro)
-- [x] Category: Microsoft Suite row (Office 365)
-- [x] Embla Carousel integration (touch swipe + desktop arrows)
-- [x] Product card: logo, name, stars, price, original price crossed out, discount badge, Buy Now
+### 1.5 Homepage ó Category Rows (Embla Carousel)
+- [x] AI Assistants row (ChatGPT, Gemini, Lovable)
+- [x] Design Tools row (Adobe CC, Canva Pro)
+- [x] Microsoft Suite row (Office 365)
+- [x] Embla + wheel gestures on all rows
+- [x] Product card: overlapping logo, name, rating pill, price, discount badge, Buy Now
+- [x] Snitch-style uppercase tracked category label headers
+- [x] Framer Motion scroll-reveal + stagger on each row
+- [x] Google Favicon API for all logos (NOT clearbit)
 
-### 1.6 Homepage ‚Äî Trust & Social Proof
-- [x] `<WhyUsSection />` ‚Äî 4 trust cards (Genuine / Instant / Secure / Support)
-- [x] `<ProofGallery />` ‚Äî masonry grid, 6‚Äì8 placeholder screenshot cards
-- [x] `<Testimonials />` ‚Äî 3 placeholder customer reviews with stars
-- [x] `<FAQSection />` ‚Äî accordion with 8 Q&As (Framer Motion height animation)
+### 1.6 Homepage ó Trust & Social Proof
+- [x] `WhyUsSection` ó 4 trust cards (Genuine / Instant / Secure / Support)
+- [x] `ProofGallery` ó placeholder screenshot cards
+- [x] `Testimonials` ó 3 placeholder reviews with stars
+- [x] `FAQSection` ó accordion with 8 Q&As (Framer Motion height animation)
 
 ### 1.7 Flash Sale Pop-up Modal
-- [x] Trigger: 3s delay after page load
-- [x] Session control: skip if `localStorage` flag set
+- [x] 3s delay trigger after page load
+- [x] localStorage session control
 - [x] Backdrop blur overlay
-- [x] Modal with product, price, countdown, CTA
-- [x] Framer Motion open/close animation (`scale` + `opacity`)
+- [x] Framer Motion scale + opacity animation
 
-### 1.8 Sample Product Detail Page
-- [x] Create `/products/chatgpt-plus` as a static demo page
-- [x] Breadcrumb navigation
-- [x] Product header: logo, name, "Verified ‚úì" badge, stars
-- [x] Price block: sale price + crossed-out original + discount %
-- [x] Description and "How It Works" 3-step section
-- [x] Buy Now button (placeholder ‚Äî no Razorpay yet in demo)
-- [x] Related products (horizontal scroll) - *Will add later or skipped for demo*
+### 1.8 First-Time Visitor Modal
+- [x] Coupon welcome modal on first visit
+- [x] Multi-coupon modal system
 
-### 1.9 Admin Login Page (UI Only)
-- [x] Create `/admin/login` route
-- [x] Simple email + password form
-- [x] NovaHub branding (logo centered)
-- [x] "Powered by Supabase Auth" ‚Äî not wired up yet, just UI
+### 1.9 Product Detail Page
+- [x] `/products/chatgpt-plus` ó static demo page
+- [x] Breadcrumb, product header, price block, description, "How It Works"
+- [x] Buy Now button (UI only ó no Razorpay yet)
 
-### 1.10 Polish & Deploy
-- [x] Dark/light mode toggle ‚Äî smooth CSS variable transition
-- [-] Scroll-triggered section reveal animations (`useInView`) - skipped for MVP
-- [x] Responsive pass: test at 375px, 768px, 1280px
-- [-] Favicon set from logo - will do later
-- [-] Open Graph meta tags (homepage only) - will do later
-- [-] Deploy to Vercel - handled manually by user
-- [x] Share live URL with Shiv
+### 1.10 Admin Login Page
+- [x] `/admin/login` route with email + password form
+- [x] NovaHub branding centered
 
-**Phase 1 Complete:** `45/45 tasks done`
+### 1.11 Polish & UI Uplift (Design Audit Applied)
+- [x] Announcement bar ? Urban Monkey marquee style (black, Indigo border)
+- [x] Product card image ? Xbox cinematic hover scale(1.04) 500ms
+- [x] Product card ? Flipkart rating pill #388E3C
+- [x] Product card ? lift hover -translate-y-1.5 + shadow-2xl
+- [x] Section reveals ? Framer Motion fade-up 600ms + 80ms stagger
+- [x] Category subheadings ? Snitch uppercase tracking-[0.15em]
+- [x] globals.css ? background #F8FAFC (Flipkart-style off-white)
+- [x] ALL logo images ? Google Favicon API (clearbit removed everywhere)
+- [x] Dark mode ? verified working on all components
+
+### 1.12 Mobile & Responsive
+- [x] Responsive pass: tested at 375px, 768px, 1280px
+- [x] Touch-swipe carousel working on mobile
+- [-] Favicon from logo ó deferred
+- [-] OG meta tags ó deferred to Phase 2
+- [-] Deploy to Vercel ó handled by user
+
+**Phase 1 Complete:** ? All tasks done
 
 ---
 
-## PHASE 2 ‚Äî FULL BUILD (Days 4‚Äì14)
-> Goal: Fully functional site with database, payments, admin panel, and all pages
+## PHASE 1.5 ó UI UPLIFT (Design Audit ? Pending Components)
+> Design audit applied to flash-sale and category sections. These components still need the treatment:
+
+- [ ] `nav.tsx` ó Add scroll-triggered glassmorphism (transparent ? backdrop-blur on scroll)
+- [ ] `nav.tsx` ó Add underline-slide hover on nav links
+- [ ] Primary CTA buttons ó Add Urban Monkey color-invert hover (bg?transparent, border visible)
+- [ ] `testimonials.tsx` ó Add card border, scroll reveal stagger, avatar gradient
+- [ ] `trust-guarantee.tsx` ó Add gradient top-stripe per card, scroll reveal stagger
+- [ ] `why-us-section.tsx` ó Add icon color system (green/blue/purple/orange), scroll reveal
+- [ ] `proof-gallery.tsx` ó Add masonry-style grid polish, placeholder cards
+- [ ] `faq-section.tsx` ó Add scroll reveal, chevron rotation animation
+- [ ] `first-time-modal.tsx` ó Add urgency styling (Flipkart urgency pattern)
+- [ ] `multi-coupon-modal.tsx` ó Add visual polish
+- [ ] `footer.tsx` ó Add gradient accent on footer top border
+- [ ] `hero-section.tsx` ó Review and polish (badge style, stat numbers)
+
+---
+
+## PHASE 2 ó FULL BUILD
+> Goal: Functional site with DB, payments, admin, all pages
 
 ### 2.1 Database Setup (Supabase)
 - [ ] Create Supabase project
-- [ ] Design and create DB schema:
-  - [ ] `products` table (id, name, slug, category, price, original_price, description, image_url, is_flash_sale, is_active)
-  - [ ] `orders` table (id, order_id, customer_name, email, whatsapp, product_id, amount, coupon_code, status, created_at)
-  - [ ] `coupons` table (id, code, discount_type, discount_value, is_active, expires_at)
-  - [ ] `settings` table (key, value) ‚Äî for flash sale toggle, announcement text
-- [ ] Set up Row Level Security (RLS) policies
-- [ ] Create Supabase admin user (Shiv's email)
-- [ ] Seed database with demo products
+- [ ] `products` table
+- [ ] `orders` table
+- [ ] `coupons` table
+- [ ] `settings` table (flash sale toggle, announcement text)
+- [ ] Row Level Security (RLS) policies
+- [ ] Seed with demo products
 
 ### 2.2 Razorpay Integration
-- [ ] Create Razorpay account under Shiv's PAN/bank details
-- [ ] Install `razorpay` npm package
-- [ ] Build `/api/create-order` route (creates Razorpay order server-side)
-- [ ] Build `/api/verify-payment` route (validates payment signature)
-- [ ] Build `/api/webhook` route (handles Razorpay webhook ‚Üí update Supabase order status)
-- [ ] Wire up "Buy Now" button ‚Üí Razorpay modal flow
-- [ ] Coupon code API: `/api/verify-coupon`
-- [ ] Success confirmation page/overlay
-- [ ] Failure/retry flow
+- [ ] Create Razorpay account (Shiv's PAN/bank)
+- [ ] `/api/create-order` route
+- [ ] `/api/verify-payment` route
+- [ ] `/api/webhook` ? Supabase order update
+- [ ] Wire "Buy Now" ? Razorpay flow
+- [ ] `/api/verify-coupon` route
+- [ ] Success/failure UX
 
 ### 2.3 Checkout Form
-- [ ] Inline form (Name + Email + WhatsApp + Coupon Code)
-- [ ] Client-side validation with error states
-- [ ] Coupon field: real-time verification with debounce (500ms)
-- [ ] Price update animation when coupon applied
-- [ ] Form submit ‚Üí `/api/create-order` ‚Üí Razorpay modal
+- [ ] Inline form (Name + Email + WhatsApp + Coupon)
+- [ ] Client-side validation
+- [ ] Real-time coupon verification (500ms debounce)
+- [ ] Price animation on coupon apply
 
 ### 2.4 Dynamic Product Pages
-- [ ] Fetch all products from Supabase (`generateStaticParams` for SSG)
-- [ ] Dynamic route `/products/[slug]` reads from DB
-- [ ] Product detail page ‚Äî all sections from spec
-- [ ] `next/image` for all product images (WebP auto-conversion)
-- [ ] Product `schema.org` structured data (JSON-LD)
+- [ ] Supabase fetch ? `generateStaticParams` for SSG
+- [ ] Dynamic `/products/[slug]`
+- [ ] `next/image` for all product images
+- [ ] Product `schema.org` JSON-LD
 
 ### 2.5 All Products Page (`/products`)
-- [ ] Grid layout: 3 columns desktop, 2 tablet, 1 mobile
-- [ ] Category filter tabs (AI Assistants / Design Tools / Microsoft Suite / All)
-- [ ] Sort dropdown (Price: Low to High / High to Low / Newest)
-- [ ] Empty state if no products in a category
+- [ ] Grid: 3 cols desktop, 2 tablet, 1 mobile
+- [ ] Category filter tabs
+- [ ] Sort dropdown
 
 ### 2.6 Flash Deals Page (`/flash-deals`)
 - [ ] List all flash-sale-active products
-- [ ] Per-card countdown timer
-- [ ] Expired deals grayed out with "DEAL ENDED" badge
+- [ ] Per-card countdown
+- [ ] Expired deals grayed out
 
 ### 2.7 About Page (`/about`)
-- [ ] NovaHub story (brand story from BRAIN.md)
-- [ ] "Why choose us" section
-- [ ] WhatsApp contact link
-- [ ] Founder note from Shiv (placeholder text)
+- [ ] Brand story
+- [ ] WhatsApp contact
 
-### 2.8 Admin Panel ‚Äî Full Build
-- [ ] Supabase Auth middleware ‚Äî protect all `/admin/*` routes
-- [ ] `/admin/login` ‚Äî wire up Supabase Auth (email + password)
-- [ ] `/admin/dashboard` ‚Äî stats cards (orders today, revenue today, all-time)
-- [ ] `/admin/dashboard` ‚Äî recent orders table
-- [ ] `/admin/products` ‚Äî product list table with Edit / Delete
-- [ ] `/admin/products` ‚Äî "Add New Product" modal form with all fields
-- [ ] `/admin/products` ‚Äî image drag-and-drop upload (Supabase Storage)
-- [ ] `/admin/orders` ‚Äî orders table with status dropdown per row
-- [ ] `/admin/orders` ‚Äî WhatsApp quick-link per order
-- [ ] `/admin/settings` ‚Äî Flash sale ON/OFF toggle
-- [ ] `/admin/settings` ‚Äî Flash sale end date/time picker
-- [ ] `/admin/settings` ‚Äî Add / delete coupon codes
-- [ ] `/admin/settings` ‚Äî Announcement bar text edit
+### 2.8 Admin Panel ó Full Build
+- [ ] Supabase Auth middleware (protect `/admin/*`)
+- [ ] `/admin/login` ó wire Supabase Auth
+- [ ] `/admin/dashboard` ó stats + recent orders table
+- [ ] `/admin/products` ó table + Add/Edit/Delete modal
+- [ ] `/admin/products` ó image upload (Supabase Storage)
+- [ ] `/admin/orders` ó status dropdown + WhatsApp quick-link
+- [ ] `/admin/settings` ó flash sale toggle, timer, coupon CRUD, announcement text
 
-### 2.9 SEO Implementation
-- [ ] `<title>` and `<meta description>` for every page (dynamic from DB)
-- [ ] Canonical URL tags
-- [ ] Open Graph + Twitter Card tags (all pages)
-- [ ] `Organization` JSON-LD schema (homepage)
-- [ ] `Product` JSON-LD schema (each product page)
-- [ ] `FAQPage` JSON-LD schema (homepage + product pages)
-- [ ] `BreadcrumbList` JSON-LD (product + category pages)
-- [ ] Geographic meta tags (`geo.region`, `geo.country`)
-- [ ] `sitemap.xml` (auto-generated from Next.js)
-- [ ] `robots.txt`
+### 2.9 SEO
+- [ ] Dynamic `<title>` and `<meta description>` per page
+- [ ] Canonical URLs
+- [ ] OG + Twitter Card tags
+- [ ] `Organization` JSON-LD (homepage)
+- [ ] `Product` JSON-LD (product pages)
+- [ ] `FAQPage` JSON-LD
+- [ ] `BreadcrumbList` JSON-LD
+- [ ] Geographic meta tags
+- [ ] `sitemap.xml` + `robots.txt`
 
 ### 2.10 Performance & Quality
-- [ ] All images via `next/image` (WebP, responsive sizes)
-- [ ] `fetchpriority="high"` on hero image
-- [ ] Fonts preconnected + `display: swap`
-- [ ] `loading="lazy"` on all below-fold images
-- [ ] `will-change: transform` on all animated elements
-- [ ] Lighthouse audit: Performance > 85, SEO > 90
-- [ ] Test LCP < 2.5s on 4G throttle
-- [ ] Cross-browser test: Chrome, Safari, Firefox
-- [ ] Mobile test: 375px (iPhone SE), 390px (iPhone 14), 412px (Android)
+- [ ] All images via `next/image` (WebP, responsive)
+- [ ] `fetchpriority="high"` on hero
+- [ ] Fonts preconnected + `display:swap`
+- [ ] `loading="lazy"` below-fold images
+- [ ] `will-change: transform` on animated elements
+- [ ] Lighthouse: Performance > 85, SEO > 90
+- [ ] LCP < 2.5s on 4G throttle
+- [ ] Cross-browser: Chrome, Safari, Firefox
+- [ ] Mobile: 375px, 390px, 412px
 
 **Phase 2 Complete:** `0/59 tasks done`
 
 ---
 
-## PHASE 3 ‚Äî QA, LAUNCH & HANDOVER (Days 15‚Äì17)
-> Goal: Live website, domain pointed, Shiv can manage it independently
+## PHASE 3 ó QA, LAUNCH & HANDOVER
 
-### 3.1 Quality Assurance
-- [ ] Full user flow test: Homepage ‚Üí Product ‚Üí Checkout ‚Üí Payment ‚Üí Confirmation
-- [ ] Admin flow test: Login ‚Üí Add product ‚Üí Edit product ‚Üí View order ‚Üí Update status
-- [ ] Flash sale pop-up: shows on first visit, doesn't re-show after dismiss
-- [ ] Live ticker: cycles correctly, pauses on hover
-- [ ] Coupon codes: valid and invalid code flows
+### 3.1 QA
+- [ ] Full user flow: Homepage ? Product ? Checkout ? Payment ? Confirmation
+- [ ] Admin flow: Login ? Add product ? Edit ? View order ? Update status
+- [ ] Flash sale popup: shows once, never re-shows
+- [ ] Live ticker cycles correctly
+- [ ] Coupon flows (valid + invalid)
 - [ ] Mobile full flow (375px Android Chrome)
-- [ ] Dark/light mode: all sections correct in both modes
-- [ ] All external links: WhatsApp, social media open correctly
+- [ ] Dark/light mode: all sections correct
+- [ ] All external links working (WhatsApp, social)
 
 ### 3.2 Domain & Hosting
-- [ ] Register domain (novahub.in or agreed domain) under Sayan's email
-- [ ] Connect custom domain to Vercel
-- [ ] SSL certificate auto-provisioned by Vercel (HTTPS enforced)
-- [ ] Test all pages on live domain
+- [ ] Register domain under Sayan's email
+- [ ] Connect to Vercel
+- [ ] SSL auto-provisioned
+- [ ] Test on live domain
 
 ### 3.3 Content Handoff
-- [ ] Shiv provides real WhatsApp number ‚Üí update in all CTAs
-- [ ] Shiv provides real product prices ‚Üí update via admin panel
-- [ ] Shiv provides customer payment proof screenshots ‚Üí upload to proof gallery
-- [ ] Shiv provides or approves real testimonials
-- [ ] Finalize Privacy Policy and Terms of Service pages
+- [ ] Shiv's real WhatsApp number ? update all CTAs
+- [ ] Real product prices ? admin panel
+- [ ] Real payment proof screenshots ? proof gallery
+- [ ] Real testimonials
+- [ ] Finalize Privacy Policy + Terms
 
 ### 3.4 Client Handover
-- [ ] Record a Loom/screen recording walkthrough of the admin panel (5-10 min video)
-  - [ ] How to add a new product
-  - [ ] How to change a product price
-  - [ ] How to view and fulfil an order
-  - [ ] How to toggle flash sale on/off
-  - [ ] How to add a coupon code
-- [ ] Write a one-page "Admin Quick Reference" PDF for Shiv
-- [ ] Final handover call with Shiv ‚Äî walk through the live site + admin
-- [ ] Transfer domain to Shiv's email (after full payment received)
+- [ ] Loom walkthrough video (admin panel)
+- [ ] Admin Quick Reference PDF for Shiv
+- [ ] Final handover call
+- [ ] Transfer domain after full payment
 
 **Phase 3 Complete:** `0/17 tasks done`
 
 ---
 
-## PHASE 4 ‚Äî POST-LAUNCH MAINTENANCE (6 Months Free)
-> Only critical issues: downtime, payment failures, security bugs
-
-- [ ] Set up Vercel monitoring alerts (email on deployment failure)
-- [ ] Set up Supabase email alerts (DB connection failures)
-- [ ] Monitor Razorpay webhook failure logs (weekly check)
-- [ ] *(If critical issue reported)* Fix within 24 hours
-- [ ] 6-month free maintenance period ends ‚Üí propose paid retainer if Shiv wants ongoing support
-
-**Phase 4 Active:** Ongoing post-launch
-
----
-
-## PHASE 5 ‚Äî NICE TO HAVE (Post-Launch, Paid Additions)
-> These are out of scope for the ‚Çπ40K project. Propose as add-ons.
-
-- [ ] Email automation (Resend/SendGrid) ‚Äî auto-send credentials after payment
-- [ ] Telegram bot for Shiv's order notifications
-- [ ] Instagram feed widget on homepage
-- [ ] Analytics dashboard (order trends, top products, revenue charts)
-- [ ] Affiliate / referral link tracking system
-- [ ] Multi-currency (‚Çπ + $) pricing
-
----
-
 ## PROGRESS SUMMARY
 
-| Phase | Status | Tasks Done | Total |
-|-------|--------|-----------|-------|
-| Phase 0 ‚Äî Planning | ‚úÖ Complete | 10 | 10 |
-| Phase 1 ‚Äî Demo | üî¥ Not Started | 0 | 45 |
-| Phase 2 ‚Äî Full Build | üî¥ Not Started | 0 | 59 |
-| Phase 3 ‚Äî Launch | üî¥ Not Started | 0 | 17 |
-| Phase 4 ‚Äî Maintenance | ‚è≥ Post-launch | ‚Äî | ‚Äî |
-| Phase 5 ‚Äî Add-ons | üí° Optional | ‚Äî | ‚Äî |
-| **TOTAL** | | **10** | **131** |
+| Phase | Status | Done | Total |
+|-------|--------|------|-------|
+| Phase 0 ó Planning | ? Complete | 12 | 12 |
+| Phase 1 ó Demo Build | ? Complete | 45+ | 45 |
+| Phase 1.5 ó UI Uplift | ?? In Progress | 8 | 20 |
+| Phase 2 ó Full Build | ?? Not Started | 0 | 59 |
+| Phase 3 ó Launch | ?? Not Started | 0 | 17 |
+| Phase 4 ó Maintenance | ? Post-launch | ó | ó |
+| **TOTAL** | | | **153** |
 
 ---
 
@@ -292,13 +276,20 @@
 
 | Date | Decision | Reason |
 |------|---------|--------|
-| Jul 24 | Razorpay chosen over Cashfree | Better npm package, UPI support, RBI-licensed |
-| Jul 24 | Next.js 14 App Router chosen | SSR for SEO, API routes, image optimization |
-| Jul 24 | Supabase chosen over Firebase | SQL relational data, free tier sufficient |
-| Jul 24 | Vercel hosting chosen | Native Next.js, free tier, auto SSL |
-| Jul 24 | Domain registered under Sayan's email | Transfer to Shiv after full payment |
-| Jul 24 | 6-month free maintenance agreed | Critical issues only (downtime, payments, security) |
-| Jul 25 | Poppins font chosen | Brand-aligned, widely loved in India |
+| Jul 24 | Razorpay chosen | Better npm package, UPI support, RBI-licensed |
+| Jul 24 | Next.js App Router | SSR for SEO, API routes, image optimization |
+| Jul 24 | Supabase over Firebase | SQL relational, free tier sufficient |
+| Jul 24 | Vercel hosting | Native Next.js, free tier, auto SSL |
+| Jul 24 | 6-month free maintenance | Critical issues only |
+| Jul 25 | Outfit font chosen | More modern than Poppins, excellent at all weights. BRAIN.md originally said Poppins ó corrected. |
 | Jul 25 | Light mode as default | Hero is white bg; dark mode is user toggle |
-| Jul 25 | Admin panel: light mode only | Shiv-friendly, simpler, more legible |
-| Jul 25 | Product categories confirmed | AI Assistants, Design Tools, Microsoft Suite |
+| Jul 25 | Admin: light mode only | Shiv-friendly, more legible |
+| Jul 25 | clearbit logo API removed | Rate-limited/blocked ó replaced with Google Favicon API |
+| Jul 25 | Next.js version is 16.2.11 | BRAIN.md originally said "14" ó corrected |
+| Jul 25 | Tailwind v4 CSS-first | No tailwind.config.js ó tokens in globals.css only |
+| Jul 25 | Design audit: 6 sites | Amazon IN, Flipkart, Xbox, GullySports, Snitch, Urban Monkey |
+| Jul 25 | Urban Monkey marquee bar | Applied to announcement-bar.tsx ó black + Indigo border |
+| Jul 25 | Xbox card hover | Applied to flash-sale + category-scroll ó scale(1.04) 500ms |
+| Jul 25 | Flipkart rating pill | Applied to all product cards ó #388E3C |
+| Jul 25 | Snitch uppercase tracking | Applied to category subheadings |
+| Jul 25 | Background #F8FAFC | Applied in globals.css light mode |

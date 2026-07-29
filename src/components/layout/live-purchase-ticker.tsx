@@ -14,9 +14,13 @@ const notifications = [
 
 export function LivePurchaseTicker() {
   const [currentNotification, setCurrentNotification] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    setIsVisible(true)
+
     const interval = setInterval(() => {
       setIsVisible(false)
       
@@ -28,6 +32,8 @@ export function LivePurchaseTicker() {
 
     return () => clearInterval(interval)
   }, [])
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-50 hidden sm:block">
