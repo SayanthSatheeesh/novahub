@@ -66,29 +66,66 @@
   }
   
   --animate-marquee: marquee var(--duration) linear infinite;
+
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(100%); }
+  }
 }
 
 :root {
-  --background: #F3F0FF;
-  --foreground: #12131A;
+  --background: #FEFCFF;
+  --foreground: #0F172A;
   --card: #FFFFFF;
-  --card-foreground: #12131A;
+  --card-foreground: #0F172A;
   --popover: #FFFFFF;
-  --popover-foreground: #12131A;
-  --primary: #454AD3;
+  --popover-foreground: #0F172A;
+  --primary: #4F46E5;
   --primary-foreground: #FFFFFF;
-  --secondary: #E8E4F9;
-  --secondary-foreground: #12131A;
-  --muted: #EAE7F8;
-  --muted-foreground: #5A5A72;
-  --accent: #E8E4F9;
-  --accent-foreground: #12131A;
-  --destructive: #EB5757;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #1E293B;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #EEF2FF;
+  --accent-foreground: #1E293B;
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #D5D0F0;
-  --input: #D5D0F0;
-  --ring: #454AD3;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #4F46E5;
   --radius: 0.625rem;
+
+  /* ── NovaHub Master Spec Token Extensions ── */
+
+  /* Urgency system */
+  --color-urgency: #FF6B2B;
+  --color-urgency-red: #FF3B3B;
+
+  /* Trust system */
+  --color-trust: #1A73E8;
+  --color-trust-green: #00C48C;
+
+  /* Badge types */
+  --color-badge-hot: #FF6B2B;
+  --color-badge-new: #7C3AED;
+  --color-badge-urgent: #FF3B3B;
+  --color-badge-best: #F4B400;
+
+  /* Star rating gold */
+  --color-gold: #F4B400;
+
+  /* Savings text */
+  --color-savings: #10B981;
+
+  /* WhatsApp green */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #1EBE5D;
+
+  /* Gradient definitions */
+  --gradient-cta: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%);
+  --gradient-urgency: linear-gradient(90deg, #FF3B3B 0%, #FF6B2B 100%);
+  --gradient-hero: linear-gradient(135deg, #0D0D14 0%, #1A1040 50%, #0D0D14 100%);
+  --gradient-trust-bar: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
 }
 
 .dark {
@@ -111,6 +148,10 @@
   --border: #2E2E44;
   --input: #2E2E44;
   --ring: #6366F1;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Intentionally empty — theme is controlled by next-themes class attribute, not OS preference */
 }
 
 @layer base {

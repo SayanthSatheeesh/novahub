@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { Star, MessageCircle, ArrowRight, ShieldCheck, Zap } from "lucide-react"
+import { Star, ArrowRight, Zap } from "lucide-react"
 import Link from "next/link"
 import { Marquee } from "@/components/ui/marquee"
 
@@ -47,10 +47,28 @@ const FloatingLogo = ({
 
 export function HeroSection() {
   return (
-    <section className="pt-24 pb-10 md:pt-32 md:pb-16 bg-background dark:bg-[#0F0F23] relative overflow-hidden">
-      {/* Background Lighting & Radial Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-to-br from-[#4FC3F7]/15 to-[#7B2FBE]/15 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
+    <section className="pt-24 pb-10 md:pt-32 md:pb-16 relative overflow-hidden z-0">
+      {/* Static SVG Noise Filter */}
+      <svg className="pointer-events-none absolute hidden" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+        <filter id="hero-noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+      </svg>
+      
+      {/* Premium Mesh Gradient Background + Noise Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-[#FEFCFF] dark:bg-[#0F0F23] overflow-hidden -z-10">
+        {/* Soft Lavender / Pink / Blue Orbs */}
+        <div className="absolute top-[-10%] left-[-5%] w-[50%] h-[50%] rounded-full bg-[#F3E8FF]/80 dark:bg-purple-900/20 blur-[100px] pointer-events-none" />
+        <div className="absolute top-[10%] right-[-10%] w-[55%] h-[60%] rounded-full bg-[#EADDFF]/70 dark:bg-[#7B2FBE]/15 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[15%] w-[60%] h-[50%] rounded-full bg-[#E0E7FF]/60 dark:bg-blue-900/15 blur-[110px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[40%] h-[40%] rounded-full bg-[#F5F3FF]/80 dark:bg-violet-900/10 blur-[90px] pointer-events-none" />
+        
+        {/* Grain Texture Layer */}
+        <div 
+          className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06] mix-blend-overlay pointer-events-none" 
+          style={{ filter: "url(#hero-noise)" }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
@@ -114,7 +132,7 @@ export function HeroSection() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 100 }}
             className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start"
           >
             <Link href="/products">

@@ -38,7 +38,10 @@ export function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null)
 
   return (
-    <section className="py-16 md:py-24 bg-background dark:bg-[#16163A]/30 border-b border-border dark:border-white/5">
+    <section className="py-16 md:py-24 bg-[#F5F3FF] dark:bg-[#16163A]/30 border-b border-violet-100/50 dark:border-white/5 relative overflow-hidden">
+      {/* Lavender radial glow — bottom center */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-64 bg-gradient-to-t from-violet-300/15 to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-200/15 rounded-full blur-[80px] pointer-events-none" />
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
@@ -64,7 +67,7 @@ export function FAQSection() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
                 }}
-                className={`bg-white dark:bg-[#151528] backdrop-blur-md rounded-2xl border transition-all duration-300 ${isOpen ? 'border-purple-500/50 shadow-lg shadow-purple-500/5 dark:border-purple-500/50' : 'border-border dark:border-white/10 hover:border-violet-300 dark:hover:border-white/20'}`}
+                className={`bg-white dark:bg-[#151528] backdrop-blur-md rounded-2xl border-2 transition-all duration-300 shadow-sm ${isOpen ? 'border-purple-400 shadow-lg shadow-purple-500/5 dark:border-purple-500/50' : 'border-slate-200 dark:border-white/10 hover:border-violet-400 dark:hover:border-white/20'}`}
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}

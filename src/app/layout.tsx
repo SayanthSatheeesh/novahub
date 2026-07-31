@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
-import { LivePurchaseTicker } from "@/components/layout/live-purchase-ticker";
 import { WhatsAppFAB } from "@/components/layout/whatsapp-fab";
 import "./globals.css";
 
@@ -34,18 +33,16 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
           disableTransitionOnChange
         >
           <AnnouncementBar />
-          <header className="sticky top-0 z-50 w-full h-0">
+          <header className="sticky top-0 z-50 w-full">
             <Nav />
           </header>
           <main className="flex-1">
             {children}
           </main>
           <Footer />
-          <LivePurchaseTicker />
           <WhatsAppFAB />
         </ThemeProvider>
       </body>

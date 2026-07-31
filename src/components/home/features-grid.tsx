@@ -11,17 +11,29 @@ import { motion } from "framer-motion"
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const stats = [
-  { icon: <Users className="w-5 h-5" />, value: "12,000+", label: "Happy Customers" },
-  { icon: <Star className="w-5 h-5 fill-current" />, value: "4.9 ★", label: "Average Rating" },
-  { icon: <Clock className="w-5 h-5" />, value: "<2s", label: "Delivery Speed" },
-  { icon: <BadgeCheck className="w-5 h-5" />, value: "98%", label: "Satisfaction Rate" },
+  { icon: <Users className="w-7 h-7 text-[#4F46E5] dark:text-[#818cf8]" />, value: "12,000+", label: "Happy Customers" },
+  { 
+    icon: (
+      <div className="flex gap-0.5 text-[#F59E0B] drop-shadow-sm">
+        <Star className="w-5 h-5 fill-current" />
+        <Star className="w-5 h-5 fill-current" />
+        <Star className="w-5 h-5 fill-current" />
+        <Star className="w-5 h-5 fill-current" />
+        <Star className="w-5 h-5 fill-current" />
+      </div>
+    ), 
+    value: "4.9", 
+    label: "Average Rating" 
+  },
+  { icon: <Clock className="w-7 h-7 text-[#4F46E5] dark:text-[#818cf8]" />, value: "<2s", label: "Delivery Speed" },
+  { icon: <BadgeCheck className="w-7 h-7 text-[#4F46E5] dark:text-[#818cf8]" />, value: "98%", label: "Satisfaction Rate" },
 ]
 
 const corePromises = [
   {
     icon: <ShieldCheck className="w-8 h-8" />,
     iconColor: "text-blue-600 dark:text-blue-400",
-    iconBg: "bg-blue-50 dark:bg-blue-500/15 border-blue-200 dark:border-blue-500/25",
+    iconBg: "bg-blue-50 dark:bg-blue-500/15 border-blue-300 dark:border-blue-500/25",
     accentColor: "text-blue-600 dark:text-blue-400",
     gradientBar: "from-blue-500 to-indigo-500",
     tag: "Authenticity",
@@ -32,7 +44,7 @@ const corePromises = [
   {
     icon: <Zap className="w-8 h-8" />,
     iconColor: "text-amber-500 dark:text-amber-400",
-    iconBg: "bg-amber-50 dark:bg-amber-500/15 border-amber-200 dark:border-amber-500/25",
+    iconBg: "bg-amber-50 dark:bg-amber-500/15 border-amber-300 dark:border-amber-500/25",
     accentColor: "text-amber-500 dark:text-amber-400",
     gradientBar: "from-amber-400 to-orange-500",
     tag: "Speed",
@@ -43,7 +55,7 @@ const corePromises = [
   {
     icon: <Tag className="w-8 h-8" />,
     iconColor: "text-purple-600 dark:text-purple-400",
-    iconBg: "bg-purple-50 dark:bg-purple-500/15 border-purple-200 dark:border-purple-500/25",
+    iconBg: "bg-purple-50 dark:bg-purple-500/15 border-purple-300 dark:border-purple-500/25",
     accentColor: "text-purple-600 dark:text-purple-400",
     gradientBar: "from-purple-500 to-pink-500",
     tag: "Value",
@@ -99,10 +111,10 @@ const fadeUpItem = {
 
 export function FeaturesGridSection() {
   return (
-    <section className="py-20 md:py-28 bg-background dark:bg-[#0F0F23] border-b border-border dark:border-white/5 relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-80 bg-primary/6 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/6 rounded-full blur-[100px] pointer-events-none" />
+    <section className="py-20 md:py-28 bg-[#F3F0FF] dark:bg-[#0F0F23] border-b border-violet-100 dark:border-white/5 relative overflow-hidden">
+      {/* Lavender radial glow — center */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-br from-violet-400/15 to-purple-300/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-300/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
 
@@ -116,17 +128,17 @@ export function FeaturesGridSection() {
           transition={{ duration: 0.55 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8 text-primary text-xs font-extrabold mb-5 backdrop-blur-md tracking-wider uppercase">
-            <BadgeCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 text-slate-800 dark:text-slate-200 text-sm font-semibold mb-6 shadow-sm backdrop-blur-md">
+            <BadgeCheck className="w-4 h-4 text-emerald-500" />
             Trusted by 12,000+ professionals
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground tracking-tight mb-4 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-5 leading-tight">
             Why Thousands Choose{" "}
-            <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
+            <span className="text-primary">
               NovaHub
             </span>
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
             Premium software at wholesale prices — with instant delivery, genuine licenses, and a guarantee that protects every order.
           </p>
         </motion.div>
@@ -139,17 +151,17 @@ export function FeaturesGridSection() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-12"
         >
           {stats.map((s, i) => (
             <motion.div
               key={i}
               variants={fadeUpItem}
-              className="flex flex-col items-center justify-center gap-1.5 bg-white dark:bg-white/5 border border-border dark:border-white/8 rounded-2xl py-5 px-4 text-center group hover:border-primary/40 hover:shadow-md transition-all duration-300"
+              className="flex flex-col items-center justify-center gap-1.5 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 rounded-2xl py-6 px-4 text-center group hover:border-primary/40 hover:shadow-md transition-all duration-300 shadow-sm"
             >
-              <span className="text-primary/70">{s.icon}</span>
-              <span className="text-2xl md:text-3xl font-black text-foreground tracking-tight">{s.value}</span>
-              <span className="text-xs text-muted-foreground font-semibold">{s.label}</span>
+              <span>{s.icon}</span>
+              <span className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2 mb-1">{s.value}</span>
+              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{s.label}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -157,10 +169,10 @@ export function FeaturesGridSection() {
         {/* ══════════════════════════════════
             BLOCK 3 · Core 3 Promise Cards
         ══════════════════════════════════ */}
-        <div className="mb-6">
-          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-muted-foreground text-center mb-6">
+        <div className="mb-6 mt-20">
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#9333EA] text-center mb-10 pb-2">
             Our Core Promises to You
-          </p>
+          </h2>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -172,7 +184,7 @@ export function FeaturesGridSection() {
               <motion.div
                 key={i}
                 variants={fadeUpItem}
-                className="relative bg-white dark:bg-[#15152a] rounded-3xl border border-border dark:border-white/10 overflow-hidden group hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/8 dark:hover:shadow-black/40 transition-all duration-300 shadow-md"
+                className="relative bg-white dark:bg-[#15152a] rounded-3xl border-2 border-slate-200/80 dark:border-white/10 overflow-hidden group hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/8 dark:hover:shadow-black/40 transition-all duration-300 shadow-sm hover:[box-shadow:0_0_0_1px_rgba(124,58,237,0.3),0_8px_32px_rgba(0,0,0,0.08)]"
               >
                 {/* Gradient accent bar on top */}
                 <div className={`h-1 w-full bg-gradient-to-r ${p.gradientBar}`} />
@@ -189,7 +201,7 @@ export function FeaturesGridSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-extrabold text-foreground mb-3 leading-tight">
+                  <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
                     {p.title}
                   </h3>
 

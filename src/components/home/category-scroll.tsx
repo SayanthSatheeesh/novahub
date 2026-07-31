@@ -51,7 +51,7 @@ const categories = [
 function ProductCard({ product }: { product: any }) {
   return (
     <div className="flex-[0_0_85%] sm:flex-[0_0_45%] md:flex-[0_0_32%] lg:flex-[0_0_24%] min-w-[280px] pl-4">
-      <div className="bg-white dark:bg-[#141414] rounded-2xl border border-violet-100 dark:border-white/10 h-full flex flex-col group transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-200/60 dark:hover:shadow-indigo-500/10 overflow-hidden relative">
+      <div className="bg-white dark:bg-[#141414] rounded-2xl border border-violet-100 dark:border-white/10 h-full flex flex-col group transition-all duration-300 ease-out hover:-translate-y-2 shadow-lg shadow-violet-100/50 hover:shadow-2xl hover:shadow-violet-300/50 dark:hover:shadow-indigo-500/10 overflow-hidden relative">
         
         {/* Discount Badge */}
         <div className="absolute top-3 right-3 z-20 bg-gradient-to-r from-primary to-purple-600 text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow-md">
@@ -75,7 +75,7 @@ function ProductCard({ product }: { product: any }) {
              <img src={`https://www.google.com/s2/favicons?sz=128&domain=${product.logo}`} alt={`${product.name} logo`} className="w-full h-full object-contain" />
           </div>
 
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1.5 group-hover:text-primary transition-colors line-clamp-1">
+          <h3 className="text-[17px] font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors tracking-tight line-clamp-1">
             {product.name}
           </h3>
           <div className="flex items-center gap-2 mb-4">
@@ -86,9 +86,9 @@ function ProductCard({ product }: { product: any }) {
             <span className="text-slate-500 dark:text-slate-400 text-xs font-semibold">(2k+ reviews)</span>
           </div>
 
-          <div className="flex items-baseline gap-2 mb-5 mt-auto">
-            <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{product.price}</span>
-            <span className="text-sm line-through text-slate-400 font-semibold">{product.original}</span>
+          <div className="flex items-end gap-2.5 mb-6 mt-auto">
+            <span className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-none">{product.price}</span>
+            <span className="text-sm line-through text-slate-400 font-medium mb-0.5">{product.original}</span>
           </div>
 
           <a href={`/products/${product.slug}`} className="w-full">
@@ -124,11 +124,17 @@ function CategoryRow({ category }: { category: any }) {
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="mb-14 last:mb-0"
     >
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="uppercase tracking-widest font-black text-lg md:text-xl text-foreground flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-primary" />
-          {category.title}
-        </h2>
+      <div className="flex items-end justify-between mb-8">
+        <div className="flex items-center gap-3.5 md:gap-4">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#9333EA] flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0">
+            <svg className="w-5 h-5 md:w-6 md:h-6 text-white fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C12 0 12.5 8 16 11.5C19.5 15 24 15 24 15C24 15 17.5 15.5 14 19C10.5 22.5 12 24 12 24C12 24 11.5 17.5 8 14C4.5 10.5 0 11.5 0 11.5C0 11.5 6.5 11 10 7.5C13.5 4 12 0 12 0Z" />
+            </svg>
+          </div>
+          <h2 className="tracking-tighter font-black text-3xl md:text-[34px] lg:text-4xl text-[#111118] dark:text-white leading-none mt-1">
+            {category.title}
+          </h2>
+        </div>
         <div className="flex items-center gap-4">
           <div className="flex gap-2">
             <Button
@@ -170,8 +176,14 @@ export function CategoryScrollSection() {
     : categories.filter(c => c.id === activeFilter)
 
   return (
-    <section className="py-16 md:py-20 bg-background dark:bg-[#090915] border-b border-border dark:border-white/5">
-      <div className="container mx-auto px-4 overflow-hidden">
+    <section className="py-16 md:py-20 bg-[#F8F6FF] dark:bg-[#090915] border-b border-violet-100 dark:border-white/5 relative overflow-hidden">
+      {/* Dynamic Aurora Glows (Massive Pastel Watercolor) */}
+      <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[80%] bg-purple-200/70 dark:bg-purple-900/20 rounded-full blur-[160px] pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen" />
+      <div className="absolute top-[10%] right-[-10%] w-[60%] h-[90%] bg-blue-200/60 dark:bg-blue-900/10 rounded-full blur-[180px] pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen" />
+      <div className="absolute bottom-[-20%] left-[10%] w-[80%] h-[70%] bg-indigo-200/60 dark:bg-indigo-900/20 rounded-full blur-[160px] pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen" />
+      <div className="absolute bottom-[10%] right-[20%] w-[50%] h-[60%] bg-pink-200/50 dark:bg-pink-900/10 rounded-full blur-[160px] pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen" />
+
+      <div className="container mx-auto px-4 overflow-hidden relative z-10">
         {/* Category Filter Pills Bar */}
         <div className="flex items-center justify-center gap-2 md:gap-3 mb-12 flex-wrap">
           {filterOptions.map((filter) => {
@@ -180,10 +192,10 @@ export function CategoryScrollSection() {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-extrabold transition-all duration-300 border ${
+                className={`px-6 py-2.5 rounded-full text-[13px] md:text-sm font-semibold transition-all duration-300 border backdrop-blur-md ${
                   isActive
-                    ? "bg-primary text-white border-primary shadow-lg shadow-primary/25 scale-105"
-                    : "bg-slate-200 dark:bg-white/5 text-slate-900 dark:text-slate-300 border-slate-300 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 hover:bg-slate-300"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-lg shadow-slate-900/10 scale-[1.02]"
+                    : "bg-white/60 dark:bg-white/5 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/10 shadow-sm"
                 }`}
               >
                 {filter}

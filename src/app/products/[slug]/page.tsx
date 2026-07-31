@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, ChevronRight, Star, ShieldCheck, Zap, AlertCircle } from "lucide-react"
+import { CheckCircle2, ChevronRight, Star, ShieldCheck, Zap, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import { getProductBySlug, products } from "@/lib/products"
 import { notFound } from "next/navigation"
+import { GuaranteeBadge } from "@/components/ui/guarantee-badge"
 
 export function generateStaticParams() {
   return products.map((product) => ({
@@ -36,8 +37,16 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
           {/* Left Column - Product Details */}
           <div className="md:col-span-7 space-y-8">
             <div className="flex items-start gap-6">
-              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-4xl font-bold shrink-0 ${product.iconBgClass}`}>
-                {product.iconText}
+              <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-4xl font-bold shrink-0 overflow-hidden shadow-sm ${product.iconBgClass}`}>
+                {product.logoDomain ? (
+                  <img 
+                    src={`https://www.google.com/s2/favicons?sz=128&domain=${product.logoDomain}`} 
+                    alt={`${product.name} logo`} 
+                    className="w-14 h-14 object-contain"
+                  />
+                ) : (
+                  product.iconText
+                )}
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -104,12 +113,18 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
               </div>
               
               <div className="mb-6">
+                {/* Subscription anchor — shows official annual cost */}
+                {product.officialAnnualPrice && product.officialBrand && (
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Official price: ₹{product.officialAnnualPrice.toLocaleString("en-IN")}/yr via {product.officialBrand}
+                  </p>
+                )}
                 <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-4xl font-extrabold text-slate-900 dark:text-white">₹{product.price.toLocaleString()}</span>
-                  <span className="text-lg line-through text-slate-400">₹{product.originalPrice.toLocaleString()}</span>
+                  <span className="text-4xl font-extrabold text-slate-900 dark:text-white">₹{product.price.toLocaleString("en-IN")}</span>
+                  <span className="text-lg line-through text-slate-400">₹{product.originalPrice.toLocaleString("en-IN")}</span>
                 </div>
-                <div className="text-sm font-medium text-green-600 dark:text-green-400">
-                  You save ₹{(product.originalPrice - product.price).toLocaleString()} ({Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%) today
+                <div className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                  You save ₹{(product.originalPrice - product.price).toLocaleString("en-IN")} ({Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% off)
                 </div>
               </div>
 
@@ -121,22 +136,47 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
                 Secure payment powered by Razorpay
               </p>
               
-              <div className="space-y-4 pt-6 border-t border-slate-100 dark:border-slate-800">
+              {/* WhatsApp delivery promise */}
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 mb-4">
+                <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                <p className="text-sm text-foreground">
+                  <span className="font-semibold">Instant WhatsApp Delivery</span>
+                  {" "}— Credentials sent to your WhatsApp in under 5 minutes after payment.
+                </p>
+              </div>
+
+              {/* Guarantee badge (page variant) */}
+              <GuaranteeBadge variant="page" days={product.guaranteeDays} />
+
+              <div className="space-y-3 pt-5 border-t border-slate-100 dark:border-slate-800 mt-5">
                 <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
                   <ShieldCheck className="w-5 h-5 text-purple-500" />
                   <span className="text-sm font-medium">100% Genuine License</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
                   <Zap className="w-5 h-5 text-blue-500" />
-                  <span className="text-sm font-medium">Instant Delivery to Email & WhatsApp</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-                  <AlertCircle className="w-5 h-5 text-orange-500" />
-                  <span className="text-sm font-medium">7-Day Replacement Guarantee</span>
+                  <span className="text-sm font-medium">Instant Delivery to Email &amp; WhatsApp</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile sticky bottom bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3 bg-background/95 backdrop-blur-md border-t border-border shadow-xl">
+        <div className="flex items-center gap-3 container mx-auto">
+          <div className="shrink-0">
+            <p className="text-xs text-muted-foreground line-through leading-tight">
+              ₹{product.originalPrice.toLocaleString("en-IN")}
+            </p>
+            <p className="text-lg font-black text-foreground leading-tight">
+              ₹{product.price.toLocaleString("en-IN")}
+            </p>
+          </div>
+          <Button className="flex-1 h-12 rounded-xl font-semibold bg-primary text-primary-foreground shadow-lg">
+            Get Access Now →
+          </Button>
         </div>
       </div>
     </div>
